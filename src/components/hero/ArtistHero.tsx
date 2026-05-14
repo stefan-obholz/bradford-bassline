@@ -69,7 +69,9 @@ export default function ArtistHero({
     if (reducedMotion) return;
     videoRefs.current.forEach((v, i) => {
       if (!v) return;
-      try { v.playbackRate = 0.75; } catch { /* ignore */ }
+      // Note: playbackRate left at default 1.0. The two source clips that
+      // were 50/60 fps (kav/clip-2 and bailey-holmes/clip-1) are now
+      // re-encoded at 30 fps so they play at natural speed without manipulation.
       if (i === activeIndex) {
         try {
           v.currentTime = 0;
