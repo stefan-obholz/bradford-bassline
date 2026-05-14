@@ -1,0 +1,19 @@
+---
+interface Props {
+  press: string[];
+}
+
+const { press } = Astro.props;
+const items = [...press, ...press, ...press];
+---
+
+<section class="border-y border-concrete/10 overflow-hidden py-8 bg-asphalt">
+  <div class="flex w-max marquee-track">
+    {items.map((p) => (
+      <span class="font-display mx-8 text-3xl uppercase tracking-tight text-concrete/80 sm:text-5xl">
+        {p}
+        <span class="mx-8 text-traffic">/</span>
+      </span>
+    ))}
+  </div>
+</section>
