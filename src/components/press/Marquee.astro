@@ -4,16 +4,29 @@ interface Props {
 }
 
 const { press } = Astro.props;
-const items = [...press, ...press, ...press];
+const itemsA = [...press, ...press, ...press];
+const itemsB = [...press, ...press, ...press].reverse();
 ---
 
-<section class="border-y border-concrete/10 overflow-hidden py-8 bg-asphalt">
-  <div class="flex w-max marquee-track">
-    {items.map((p) => (
-      <span class="font-display mx-8 text-3xl uppercase tracking-tight text-concrete/80 sm:text-5xl">
-        {p}
-        <span class="mx-8 text-traffic">/</span>
-      </span>
-    ))}
+<section class="overflow-hidden border-y-2 border-ghost/10 bg-ink">
+  <div class="overflow-hidden border-b border-ghost/10 py-4">
+    <div class="marquee-track flex w-max">
+      {itemsA.map((p) => (
+        <span class="font-display chrom-soft mx-6 text-3xl uppercase tracking-tight text-ghost sm:text-5xl">
+          {p}
+          <span class="mx-6 text-magenta">◉</span>
+        </span>
+      ))}
+    </div>
+  </div>
+  <div class="overflow-hidden py-4">
+    <div class="marquee-track-rev flex w-max">
+      {itemsB.map((p) => (
+        <span class="mx-6 font-mono text-base font-bold uppercase tracking-[0.3em] text-cyan sm:text-xl">
+          {p}
+          <span class="mx-6 text-acid">▲</span>
+        </span>
+      ))}
+    </div>
   </div>
 </section>

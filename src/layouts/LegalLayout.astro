@@ -21,15 +21,15 @@ const { title, description = title } = Astro.props;
     <meta name="robots" content="noindex" />
     <title>{title} · Bradford Bassline</title>
   </head>
-  <body class="bg-asphalt text-concrete font-body">
-    <nav class="border-b border-concrete/10 px-6 py-5 sm:px-10">
+  <body class="bg-ink text-ghost font-body">
+    <nav class="border-b border-ghost/10 px-6 py-5 sm:px-10">
       <div class="mx-auto flex max-w-3xl items-center justify-between">
-        <a href="/" class="font-display text-2xl uppercase tracking-tight text-concrete transition-colors hover:text-traffic">
+        <a href="/" class="font-display text-2xl uppercase tracking-tight text-ghost transition-colors hover:text-magenta">
           Bradford Bassline
         </a>
-        <div class="flex gap-6 font-mono text-[10px] uppercase tracking-[0.3em] text-concrete/40">
-          <a href="/impressum" class="transition-colors hover:text-traffic">Impressum</a>
-          <a href="/datenschutz" class="transition-colors hover:text-traffic">Datenschutz</a>
+        <div class="flex gap-6 font-mono text-[10px] uppercase tracking-[0.3em] text-ghost/40">
+          <a href="/impressum" class="transition-colors hover:text-magenta">Impressum</a>
+          <a href="/datenschutz" class="transition-colors hover:text-magenta">Datenschutz</a>
         </div>
       </div>
     </nav>
@@ -43,13 +43,13 @@ const { title, description = title } = Astro.props;
         aria-label="OBHOLZ SOLUTIONS"
       >
         <img src="/obholz-logo-white.svg" alt="OBHOLZ SOLUTIONS" width="56" height="56" class="h-14 w-14" />
-        <span class="font-display text-xl uppercase leading-none tracking-tight text-concrete">
+        <span class="font-display text-xl uppercase leading-none tracking-tight text-ghost">
           OBHOLZ<br/>SOLUTIONS
         </span>
       </a>
 
-      <p class="font-mono text-[11px] uppercase tracking-[0.4em] text-traffic">// legal</p>
-      <h1 class="font-display mt-3 text-5xl uppercase leading-none text-concrete sm:text-6xl">
+      <p class="font-mono text-[11px] uppercase tracking-[0.4em] text-magenta">// legal</p>
+      <h1 class="font-display mt-3 text-5xl uppercase leading-none text-ghost sm:text-6xl">
         {title}
       </h1>
 
@@ -57,21 +57,21 @@ const { title, description = title } = Astro.props;
         <slot />
       </article>
 
-      <div class="mt-16 border-t border-concrete/10 pt-6 font-mono text-[10px] uppercase tracking-[0.3em] text-concrete/40">
-        <a href="/" class="transition-colors hover:text-traffic">← back to the roster</a>
+      <div class="mt-16 border-t border-ghost/10 pt-6 font-mono text-[10px] uppercase tracking-[0.3em] text-ghost/40">
+        <a href="/" class="transition-colors hover:text-magenta">← back to the roster</a>
       </div>
     </main>
 
     <style is:global>
-      .prose-legal h2 { font-family: var(--font-display); font-size: 1.5rem; text-transform: uppercase; letter-spacing: -0.01em; color: var(--color-concrete); margin: 2.5rem 0 0.75rem; }
-      .prose-legal h3 { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-traffic); margin: 1.75rem 0 0.5rem; }
+      .prose-legal h2 { font-family: var(--font-display); font-size: 1.5rem; text-transform: uppercase; letter-spacing: -0.01em; color: var(--color-ghost); margin: 2.5rem 0 0.75rem; }
+      .prose-legal h3 { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-magenta); margin: 1.75rem 0 0.5rem; }
       .prose-legal p, .prose-legal li { color: rgba(245, 245, 240, 0.65); line-height: 1.7; font-size: 0.95rem; }
       .prose-legal p { margin: 0 0 1rem; }
       .prose-legal ul { padding-left: 1.25rem; margin: 0 0 1rem; }
       .prose-legal li { margin-bottom: 0.4rem; }
-      .prose-legal strong { color: var(--color-concrete); font-weight: 600; }
-      .prose-legal a { color: var(--color-traffic); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
-      .prose-legal a:hover { color: var(--color-concrete); }
+      .prose-legal strong { color: var(--color-ghost); font-weight: 600; }
+      .prose-legal a { color: var(--color-magenta); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+      .prose-legal a:hover { color: var(--color-ghost); }
       .prose-legal table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.85rem; }
       .prose-legal th { text-align: left; padding: 0.6rem 0.75rem; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(245, 245, 240, 0.4); border-bottom: 1px solid rgba(245, 245, 240, 0.1); }
       .prose-legal td { padding: 0.6rem 0.75rem; color: rgba(245, 245, 240, 0.65); border-bottom: 1px solid rgba(245, 245, 240, 0.05); }

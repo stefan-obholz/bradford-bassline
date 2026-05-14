@@ -48,6 +48,7 @@ const topTrack = artist.topTracks[0] ? artist.topTracks[0].title : "";
     spotifyUrl={artist.links.spotify}
     topTrackTitle={topTrack}
     cityShort={cityLabel}
+    areaCode={artist.areaCode}
     client:load
   />
   <About artist={artist} />

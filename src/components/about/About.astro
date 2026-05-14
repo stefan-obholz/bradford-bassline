@@ -47,10 +47,10 @@ const totalStreamsDisplay =
     : `${artist.stats.totalStreams.toLocaleString("en-GB")}`);
 
 const stats = [
-  { label: "Total streams", value: totalStreamsDisplay },
-  { label: "Monthly listeners", value: artist.stats.monthlyListeners.toLocaleString("en-GB") },
-  { label: "City", value: "1" },
-  { label: "Area code", value: artist.areaCode },
+  { label: "Total streams", value: totalStreamsDisplay, color: "text-magenta" },
+  { label: "Monthly listeners", value: artist.stats.monthlyListeners.toLocaleString("en-GB"), color: "text-cyan" },
+  { label: "Spotify followers", value: artist.stats.spotifyFollowers.toLocaleString("en-GB"), color: "text-acid" },
+  { label: "Area code", value: artist.areaCode, color: "text-ghost" },
 ];
 
 const formatStreams = (n: number) => {
@@ -58,117 +58,150 @@ const formatStreams = (n: number) => {
   if (n >= 1_000) return `${Math.round(n / 1_000)}k`;
   return String(n);
 };
-
-const lines = artist.aboutHeadlineLines;
 ---
 
-<section id="about" class="relative border-t border-concrete/10 px-6 py-24 sm:px-10 sm:py-40">
-  <div class="mx-auto grid max-w-7xl grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-24">
-    <div class="lg:col-span-5">
-      <div class="sticky top-10">
-        <div class="font-mono text-[11px] uppercase tracking-[0.4em] text-concrete/40">
-          // 01 — about
-        </div>
-        <h2 class="font-display mt-6 text-[12vw] leading-[0.85] text-concrete sm:text-[7vw] lg:text-[5vw]">
-          {lines.slice(0, -1).map((l, i) => (
-            <Fragment>
-              {l}{i < lines.length - 2 && <br/>}<br/>
-            </Fragment>
-          ))}
-          <span class="text-traffic">{lines[lines.length - 1]}</span>.
+<!-- ABOUT — single-column, sticker-driven, big-number rhythm -->
+<section id="about" class="relative bg-ink-soft px-6 py-20 sm:px-16 sm:py-32">
+  <div class="mx-auto max-w-5xl">
+
+    <!-- 01 BIO -->
+    <div class="grid gap-8 sm:grid-cols-12">
+      <div class="sm:col-span-3">
+        <span class="sticker px-3 py-1.5 text-[11px]">№ 01 · BIO</span>
+      </div>
+      <div class="sm:col-span-9">
+        <h2 class="font-display chrom-soft text-5xl uppercase leading-[0.9] text-ghost sm:text-7xl">
+          {artist.aboutHeadlineLines.slice(0, -1).join(" ")} <span class="text-magenta">{artist.aboutHeadlineLines[artist.aboutHeadlineLines.length - 1]}</span>
         </h2>
-        {artist.bioParagraphs.map((p, i) => (
-          <p
-            class:list={[
-              "max-w-md text-base leading-relaxed text-concrete/70",
-              i === 0 ? "mt-8" : "mt-4",
-            ]}
-            set:html={p}
-          />
-        ))}
+        <div class="mt-8 space-y-5">
+          {artist.bioParagraphs.map((p) => (
+            <p class="text-base leading-relaxed text-ghost/75 sm:text-lg" set:html={p} />
+          ))}
+        </div>
       </div>
     </div>
 
-    <div class="lg:col-span-7">
-      <div class="grid grid-cols-2 gap-px bg-concrete/10">
-        {stats.map((s) => (
-          <div class="bg-asphalt p-6 sm:p-10">
-            <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-concrete/40">
-              {s.label}
-            </div>
-            <div class="font-display mt-4 text-5xl text-concrete sm:text-7xl">
-              {s.value}
-            </div>
-          </div>
-        ))}
-      </div>
+    <!-- Divider with frequency lines -->
+    <div class="my-20 flex items-center gap-4">
+      <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-magenta">⏵ FREQ</span>
+      <div class="h-px flex-1 bg-gradient-to-r from-magenta via-cyan to-acid opacity-60" />
+      <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-acid">02 STATS</span>
+    </div>
 
-      {artist.albums.length > 0 && (
-        <div class="mt-16">
-          <div class="font-mono text-[11px] uppercase tracking-[0.4em] text-concrete/40">
-            // {artist.albums.length === 1 ? "album" : "albums"}
+    <!-- 02 STATS — colored corner cards -->
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+      {stats.map((s) => (
+        <div class="border-2 border-ghost/10 bg-ink p-5 transition-colors hover:border-magenta sm:p-6">
+          <div class={`font-mono text-[9px] font-bold uppercase tracking-[0.3em] ${s.color}`}>
+            ◉ {s.label}
           </div>
-          <ul class="mt-6 divide-y divide-concrete/10 border-y border-concrete/10">
-            {artist.albums.map((a) => (
-              <li class="flex items-baseline justify-between py-5">
-                <span class="font-display text-2xl uppercase tracking-tight text-concrete sm:text-3xl">
-                  {a.title}
-                </span>
-                <span class="font-mono text-xs text-concrete/40">{a.year} · {a.type}</span>
-              </li>
-            ))}
-          </ul>
+          <div class="font-display chrom-soft mt-3 text-3xl text-ghost sm:text-5xl" style="letter-spacing:-0.03em;">
+            {s.value}
+          </div>
         </div>
-      )}
+      ))}
+    </div>
 
-      {artist.recentReleases && artist.recentReleases.length > 0 && (
-        <div class="mt-12">
-          <div class="font-mono text-[11px] uppercase tracking-[0.4em] text-concrete/40">
-            // recent drops
-          </div>
-          <ul class="mt-6 divide-y divide-concrete/10 border-y border-concrete/10">
-            {artist.recentReleases.map((r) => (
-              <li class="flex items-baseline justify-between py-3.5">
-                <span class="font-display flex-1 text-lg uppercase tracking-tight text-concrete sm:text-xl">
+    <!-- Divider -->
+    <div class="my-20 flex items-center gap-4">
+      <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-magenta">⏵ ALBUMS &amp; DROPS</span>
+      <div class="h-px flex-1 bg-gradient-to-r from-magenta via-cyan to-acid opacity-60" />
+      <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-acid">03 CATALOGUE</span>
+    </div>
+
+    <!-- 03 CATALOGUE -->
+    {artist.albums.length > 0 && (
+      <div>
+        <div class="font-mono text-[11px] font-bold uppercase tracking-[0.4em] text-cyan">
+          // {artist.albums.length === 1 ? "ALBUM" : "ALBUMS / EPS"}
+        </div>
+        <ul class="mt-6 space-y-3">
+          {artist.albums.map((a) => (
+            <li class="group flex items-baseline justify-between border-b border-ghost/10 py-4 transition-colors hover:border-magenta">
+              <span class="font-display text-2xl uppercase tracking-tight text-ghost transition-colors group-hover:text-magenta sm:text-4xl">
+                {a.title}
+              </span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-acid">
+                {a.year} · {a.type}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {artist.recentReleases && artist.recentReleases.length > 0 && (
+      <div class="mt-14">
+        <div class="font-mono text-[11px] font-bold uppercase tracking-[0.4em] text-cyan">
+          // RECENT DROPS · {artist.recentReleases.length}
+        </div>
+        <ul class="mt-6 grid gap-2 sm:grid-cols-2">
+          {artist.recentReleases.map((r, i) => (
+            <li class="flex items-baseline justify-between border-b border-ghost/5 py-3">
+              <span class="flex items-baseline gap-3">
+                <span class="font-mono text-[10px] text-magenta">{String(i + 1).padStart(2, "0")}</span>
+                <span class="font-display text-lg uppercase tracking-tight text-ghost sm:text-xl">
                   {r.title}
                   {r.feat && (
-                    <span class="ml-2 font-body text-xs lowercase tracking-normal text-concrete/40">
+                    <span class="ml-2 font-body text-[10px] lowercase tracking-normal text-ghost/40">
                       feat. {r.feat}
                     </span>
                   )}
                 </span>
-                <span class="font-mono text-xs text-concrete/40">{r.year} · {r.type}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      <div class="mt-16">
-        <div class="font-mono text-[11px] uppercase tracking-[0.4em] text-concrete/40">
-          // top tracks
-        </div>
-        <ol class="mt-6 space-y-3">
-          {artist.topTracks.map((t, i) => (
-            <li class="group flex items-baseline gap-4 border-b border-concrete/5 py-3 transition-colors hover:border-traffic/40">
-              <span class="w-8 font-mono text-[11px] text-concrete/40">
-                {String(i + 1).padStart(2, "0")}
               </span>
-              <span class="font-display flex-1 text-xl uppercase tracking-tight text-concrete transition-colors group-hover:text-traffic sm:text-2xl">
-                {t.title}
-                {t.feat && (
-                  <span class="ml-2 font-body text-xs lowercase tracking-normal text-concrete/40">
-                    feat. {t.feat}
-                  </span>
-                )}
-              </span>
-              <span class="font-mono text-[11px] text-concrete/40">
-                {formatStreams(t.streams)}
-              </span>
+              <span class="font-mono text-[9px] uppercase text-cyan">{r.year}</span>
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
+    )}
+
+    <!-- Divider -->
+    <div class="my-20 flex items-center gap-4">
+      <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-magenta">⏵ TOP CUTS</span>
+      <div class="h-px flex-1 bg-gradient-to-r from-magenta via-cyan to-acid opacity-60" />
+      <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-acid">04 CHARTS</span>
     </div>
+
+    <!-- 04 TOP TRACKS — chart-style with bars -->
+    <div>
+      <div class="font-mono text-[11px] font-bold uppercase tracking-[0.4em] text-magenta">
+        // MOST PLAYED · STREAMS
+      </div>
+      <ol class="mt-6 space-y-3">
+        {artist.topTracks.map((t, i) => {
+          const maxStreams = Math.max(...artist.topTracks.map((tr) => tr.streams));
+          const pct = (t.streams / maxStreams) * 100;
+          return (
+            <li class="group">
+              <div class="relative overflow-hidden border border-ghost/10 bg-ink p-4 transition-colors hover:border-magenta sm:p-5">
+                <div
+                  class="absolute inset-y-0 left-0 transition-all"
+                  style={`width:${pct}%; background:linear-gradient(90deg, rgba(255,0,122,0.15), rgba(0,245,255,0.05));`}
+                  aria-hidden="true"
+                />
+                <div class="relative flex items-baseline gap-4">
+                  <span class="w-8 font-mono text-xs font-bold text-magenta">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span class="font-display flex-1 text-lg uppercase tracking-tight text-ghost transition-colors group-hover:text-magenta sm:text-2xl">
+                    {t.title}
+                    {t.feat && (
+                      <span class="ml-2 font-body text-[10px] lowercase tracking-normal text-ghost/40">
+                        feat. {t.feat}
+                      </span>
+                    )}
+                  </span>
+                  <span class="font-mono text-xs font-bold tabular-nums text-acid">
+                    {formatStreams(t.streams)}
+                  </span>
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+
   </div>
 </section>
