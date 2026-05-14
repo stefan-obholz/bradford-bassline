@@ -12,7 +12,7 @@
   --color-ink: #0a0612;
   --color-ink-soft: #15101f;
   --color-ghost: #f8f8ff;
-  --color-magenta: #ff007a;
+  --color-magenta: #10ff90;
   --color-acid: #fff200;
   --color-cyan: #00f5ff;
   --color-blood: #ff1744;
@@ -83,12 +83,12 @@ body::before {
 /* Chromatic aberration on display headlines */
 .chrom {
   text-shadow:
-    -2px 0 0 rgba(255, 0, 122, 0.55),
+    -2px 0 0 rgba(16, 255, 144, 0.55),
     2px 0 0 rgba(0, 245, 255, 0.55);
 }
 .chrom-soft {
   text-shadow:
-    -1px 0 0 rgba(255, 0, 122, 0.35),
+    -1px 0 0 rgba(16, 255, 144, 0.35),
     1px 0 0 rgba(0, 245, 255, 0.35);
 }
 
@@ -137,7 +137,7 @@ body::before {
   text-shadow:
     -3px 0 0 var(--color-magenta),
     3px 0 0 var(--color-cyan),
-    0 0 24px rgba(255, 0, 122, 0.6);
+    0 0 24px rgba(16, 255, 144, 0.6);
 }
 
 /* Sticker / badge */

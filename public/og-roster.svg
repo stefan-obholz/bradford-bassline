@@ -7,7 +7,7 @@
       <stop offset="100%" stop-color="#000000"/>
     </radialGradient>
     <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ff007a"/>
+      <stop offset="0%" stop-color="#10ff90"/>
       <stop offset="50%" stop-color="#00f5ff"/>
       <stop offset="100%" stop-color="#fff200"/>
     </linearGradient>
@@ -25,7 +25,7 @@
   <rect width="1200" height="630" fill="url(#scan)"/>
 
   <!-- Top meta bar -->
-  <text x="64" y="78" font-family="'Space Mono', monospace" font-size="13" font-weight="700" fill="#ff007a" letter-spacing="3">FM 0113/01274 · WEST YORKSHIRE</text>
+  <text x="64" y="78" font-family="'Space Mono', monospace" font-size="13" font-weight="700" fill="#10ff90" letter-spacing="3">FM 0113/01274 · WEST YORKSHIRE</text>
   <circle cx="1062" cy="73" r="5" fill="#fff200"/>
   <text x="1078" y="78" font-family="'Space Mono', monospace" font-size="13" font-weight="700" fill="#fff200" letter-spacing="3">ON AIR</text>
 
@@ -33,13 +33,13 @@
   <text x="64" y="160" font-family="'Space Mono', monospace" font-size="14" font-weight="700" fill="#00f5ff" letter-spacing="4">▶ PRESENTING · THE ROSTER</text>
 
   <!-- Main title with chromatic aberration effect (3 layers) -->
-  <text x="61" y="320" font-family="'Big Shoulders Display', 'Impact', sans-serif" font-size="160" font-weight="900" fill="#ff007a" opacity="0.7" letter-spacing="-6">BRADFORD</text>
+  <text x="61" y="320" font-family="'Big Shoulders Display', 'Impact', sans-serif" font-size="160" font-weight="900" fill="#10ff90" opacity="0.7" letter-spacing="-6">BRADFORD</text>
   <text x="67" y="320" font-family="'Big Shoulders Display', 'Impact', sans-serif" font-size="160" font-weight="900" fill="#00f5ff" opacity="0.7" letter-spacing="-6">BRADFORD</text>
   <text x="64" y="320" font-family="'Big Shoulders Display', 'Impact', sans-serif" font-size="160" font-weight="900" fill="#f8f8ff" letter-spacing="-6">BRADFORD</text>
 
   <text x="61" y="460" font-family="'Big Shoulders Display', 'Impact', sans-serif" font-size="160" font-weight="900" fill="#00f5ff" opacity="0.6" letter-spacing="-6">BASSLINE.</text>
   <text x="67" y="460" font-family="'Big Shoulders Display', 'Impact', sans-serif" font-size="160" font-weight="900" fill="#fff200" opacity="0.5" letter-spacing="-6">BASSLINE.</text>
-  <text x="64" y="460" font-family="'Big Shoulders Display', 'Impact', sans-serif" font-size="160" font-weight="900" fill="#ff007a" letter-spacing="-6">BASSLINE.</text>
+  <text x="64" y="460" font-family="'Big Shoulders Display', 'Impact', sans-serif" font-size="160" font-weight="900" fill="#10ff90" letter-spacing="-6">BASSLINE.</text>
 
   <!-- Frequency divider -->
   <rect x="64" y="490" width="1072" height="2" fill="url(#accent)" opacity="0.6"/>
