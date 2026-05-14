@@ -52,7 +52,7 @@
     "tiktok": "https://www.tiktok.com/@kav_official"
   },
   "youtubeChannelId": "UCEJDZHjJ9BAzWNuh0MGHfuQ",
-  "ogImage": "/og-kav.png",
+  "ogImage": "/og-kav-v2.png",
   "videos": [
     { "mp4": "/video/kav/clip-1.mp4", "webm": "/video/kav/clip-1.webm", "poster": "/video/kav/poster-1.jpg", "track": "Charva Essentials" },
     { "mp4": "/video/kav/clip-2.mp4", "webm": "/video/kav/clip-2.webm", "poster": "/video/kav/poster-2.jpg", "track": "In The House" },

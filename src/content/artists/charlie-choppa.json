@@ -46,7 +46,7 @@
     "tiktok": "https://www.tiktok.com/@charlie_choppa"
   },
   "youtubeChannelId": "UC02aAs70vVvSRHBDQW7kEDA",
-  "ogImage": "/og-charlie-choppa.png",
+  "ogImage": "/og-charlie-choppa-v2.png",
   "videos": [
     { "mp4": "/video/charlie-choppa/clip-1.mp4", "webm": "/video/charlie-choppa/clip-1.webm", "poster": "/video/charlie-choppa/poster-1.jpg", "track": "Robbers and Riders" },
     { "mp4": "/video/charlie-choppa/clip-2.mp4", "webm": "/video/charlie-choppa/clip-2.webm", "poster": "/video/charlie-choppa/poster-2.jpg", "track": "Sliding" },
