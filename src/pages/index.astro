@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import RosterHeroVideo from "../components/hero/RosterHeroVideo.tsx";
 import kav from "../content/artists/kav.json";
 import bailey from "../content/artists/bailey-holmes.json";
 import charlie from "../content/artists/charlie-choppa.json";
@@ -13,6 +14,15 @@ const roster = [
 const totalCombinedStreams = roster.reduce((sum, a) => sum + (a.stats.totalStreams || 0), 0);
 const totalDisplay = (totalCombinedStreams / 1000000).toFixed(0) + "M+";
 const year = new Date().getFullYear();
+
+// Hero video clips — from "Numerous Bootings Allstar Remix" (Meathead × Skizzy UK
+// ft. KAV, Marky B, MC Innes, Bailey Holmes, YA), the track that locked the
+// scene together. Three short crew-energy cuts, looped.
+const heroVideos = [
+  { mp4: "/video/roster/clip-1.mp4", webm: "/video/roster/clip-1.webm", poster: "/video/roster/poster-1.jpg" },
+  { mp4: "/video/roster/clip-2.mp4", webm: "/video/roster/clip-2.webm", poster: "/video/roster/poster-2.jpg" },
+  { mp4: "/video/roster/clip-3.mp4", webm: "/video/roster/clip-3.webm", poster: "/video/roster/poster-3.jpg" },
+];
 
 // Marquee strings
 const tickerA = ["BASSLINE FREQUENCY", "WEST YORKSHIRE UK", "138 BPM", "PIRATE RADIO ⚡", "ON AIR", "TUNE IN"];
@@ -38,14 +48,14 @@ const tickerB = roster.map(r => `${r.name.toUpperCase()} · ${r.stats.totalStrea
 
     <!-- HERO ZONE -->
     <section class="relative overflow-hidden border-b border-ghost/10 px-6 py-24 sm:px-16 sm:py-32 lg:py-40">
-      <!-- Backdrop: huge transparent BB monogram -->
-      <div
-        class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none font-display text-[40vw] font-black uppercase leading-none text-ghost/[0.03] sm:text-[30vw]"
-        style="letter-spacing:-0.06em; line-height:0.8;"
-        aria-hidden="true"
-      >
-        BB
+      <!-- Video background carousel (Numerous Bootings Allstar Remix) -->
+      <div class="absolute inset-0">
+        <RosterHeroVideo videos={heroVideos} client:load />
       </div>
+
+      <!-- Dark overlays for type readability -->
+      <div class="pointer-events-none absolute inset-0" style="background: linear-gradient(180deg, rgba(10,6,18,0.55) 0%, rgba(10,6,18,0.85) 60%, rgba(10,6,18,0.97) 100%);"></div>
+      <div class="pointer-events-none absolute inset-0 mix-blend-color" style="background: linear-gradient(135deg, rgba(255,0,122,0.16) 0%, rgba(0,245,255,0.10) 100%);"></div>
 
       <!-- LIVE indicator top-right -->
       <div class="absolute right-6 top-6 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-acid sm:right-10 sm:top-10">
@@ -72,7 +82,7 @@ const tickerB = roster.map(r => `${r.name.toUpperCase()} · ${r.stats.totalStrea
           <span class="border border-cyan/60 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.3em] text-cyan" style="background:rgba(0,245,255,0.06);">
             ⏵ WEST YORKSHIRE · 138 BPM
           </span>
-          <span class="border border-magenta/60 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.3em] text-magenta" style="background:rgba(16,255,144,0.06);">
+          <span class="border border-magenta/60 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.3em] text-magenta" style="background:rgba(255,0,122,0.06);">
             ◉ PIRATE FREQUENCY
           </span>
         </div>
@@ -81,6 +91,10 @@ const tickerB = roster.map(r => `${r.name.toUpperCase()} · ${r.stats.totalStrea
           Three independent artists, one sound. <strong class="text-ghost">KAV</strong> out of Leeds,
           <strong class="text-ghost">Bailey Holmes</strong> + <strong class="text-ghost">Charlie Choppa</strong> from Bradford.
           {totalDisplay} streams across the crew.
+        </p>
+
+        <p class="mt-8 max-w-2xl font-mono text-[10px] uppercase tracking-[0.3em] text-ghost/40">
+          ⏵ Hero clips · Numerous Bootings Allstar Remix
         </p>
       </div>
     </section>
@@ -119,7 +133,7 @@ const tickerB = roster.map(r => `${r.name.toUpperCase()} · ${r.stats.totalStrea
             return (
               <a href={artist.url} class="group relative block">
                 <div
-                  class="relative overflow-hidden border border-ghost/10 bg-ink-soft transition-all duration-300 ease-out group-hover:-translate-y-2 group-hover:border-magenta/80 group-hover:shadow-[0_24px_60px_-12px_rgba(16,255,144,0.35)]"
+                  class="relative overflow-hidden border border-ghost/10 bg-ink-soft transition-all duration-300 ease-out group-hover:-translate-y-2 group-hover:border-magenta/80 group-hover:shadow-[0_24px_60px_-12px_rgba(255,0,122,0.35)]"
                 >
                   <!-- Poster background -->
                   {poster && (

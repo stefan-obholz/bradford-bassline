@@ -130,7 +130,7 @@ export default function ArtistHero({
         background: "linear-gradient(180deg, rgba(10,6,18,0.4) 0%, rgba(10,6,18,0.7) 50%, rgba(10,6,18,0.95) 100%)",
       }} />
       <div className="absolute inset-0 mix-blend-color" style={{
-        background: "linear-gradient(135deg, rgba(16,255,144,0.18) 0%, rgba(0,245,255,0.10) 100%)",
+        background: "linear-gradient(135deg, rgba(255,0,122,0.18) 0%, rgba(0,245,255,0.10) 100%)",
       }} />
 
       {/* Vignette */}
@@ -238,7 +238,7 @@ export default function ArtistHero({
               target="_blank"
               rel="noopener noreferrer"
               className="group mt-10 inline-flex items-center gap-3 border-2 border-magenta bg-ink/40 px-7 py-3.5 font-mono text-xs font-bold uppercase tracking-[0.3em] text-magenta backdrop-blur-md transition-all hover:bg-magenta hover:text-ink sm:mt-12"
-              style={{ boxShadow: "0 0 0 1px rgba(16,255,144,0.2), 0 8px 32px rgba(16,255,144,0.15)" }}
+              style={{ boxShadow: "0 0 0 1px rgba(255,0,122,0.2), 0 8px 32px rgba(255,0,122,0.15)" }}
             >
               <span className="inline-block h-2 w-2 rounded-full bg-magenta group-hover:bg-ink" />
               ⏵ Hit play · Spotify
