@@ -35,6 +35,7 @@ export default function RosterHeroVideo({ videos }: Props) {
     if (reduced) return;
     refs.current.forEach((v, i) => {
       if (!v) return;
+      try { v.playbackRate = 0.75; } catch { /* ignore */ }
       if (i === active) {
         try {
           v.currentTime = 0;

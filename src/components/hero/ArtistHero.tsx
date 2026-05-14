@@ -69,6 +69,7 @@ export default function ArtistHero({
     if (reducedMotion) return;
     videoRefs.current.forEach((v, i) => {
       if (!v) return;
+      try { v.playbackRate = 0.75; } catch { /* ignore */ }
       if (i === activeIndex) {
         try {
           v.currentTime = 0;
@@ -170,9 +171,15 @@ export default function ArtistHero({
         </div>
       </div>
 
-      {/* TOP BAR */}
-      <div className="absolute left-6 right-6 top-6 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em] sm:left-20 sm:right-20 sm:top-8">
-        <span className="text-ghost/70">FM {areaCode ?? cityLabel.toUpperCase()} · WEST YORKSHIRE</span>
+      {/* TOP BAR — back-nav left, ON AIR right */}
+      <div className="absolute left-6 right-6 top-6 z-20 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em] sm:left-20 sm:right-20 sm:top-8">
+        <a
+          href="/"
+          className="group inline-flex items-center gap-2 border border-ghost/20 bg-ink/40 px-3 py-1.5 text-ghost/70 backdrop-blur-md transition-all hover:border-magenta hover:text-magenta"
+        >
+          <span className="text-base leading-none transition-transform group-hover:-translate-x-0.5">←</span>
+          <span>Bradford Bassline</span>
+        </a>
         <span className="flex items-center gap-2 text-acid">
           <span className="live-dot inline-block h-2 w-2 rounded-full bg-acid" />
           ON AIR

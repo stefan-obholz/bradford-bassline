@@ -131,9 +131,9 @@ const tickerB = roster.map(r => `${r.name.toUpperCase()} · ${r.stats.totalStrea
             const poster = artist.videos && artist.videos[0] ? artist.videos[0].poster : null;
             const number = String(i + 1).padStart(2, "0");
             return (
-              <a href={artist.url} class="group relative block">
+              <a href={artist.url} class="group relative block h-full">
                 <div
-                  class="relative overflow-hidden border border-ghost/10 bg-ink-soft transition-all duration-300 ease-out group-hover:-translate-y-2 group-hover:border-magenta/80 group-hover:shadow-[0_24px_60px_-12px_rgba(255,0,122,0.35)]"
+                  class="relative flex h-full min-h-[480px] flex-col overflow-hidden border border-ghost/10 bg-ink-soft transition-all duration-300 ease-out group-hover:-translate-y-2 group-hover:border-magenta/80 group-hover:shadow-[0_24px_60px_-12px_rgba(255,0,122,0.35)]"
                 >
                   <!-- Poster background -->
                   {poster && (
@@ -148,7 +148,7 @@ const tickerB = roster.map(r => `${r.name.toUpperCase()} · ${r.stats.totalStrea
                   />
 
                   <!-- Card content -->
-                  <div class="relative z-10 p-7 sm:p-9">
+                  <div class="relative z-10 flex h-full flex-col p-7 sm:p-9">
                     <div class="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em]">
                       <span class="text-ghost/40">№ {number}</span>
                       <span class="text-ghost/40">FM {artist.areaCode}</span>
@@ -184,7 +184,7 @@ const tickerB = roster.map(r => `${r.name.toUpperCase()} · ${r.stats.totalStrea
                       </div>
                     )}
 
-                    <div class="mt-10 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em] text-ghost/50 transition-colors duration-300 group-hover:text-magenta">
+                    <div class="mt-auto flex items-center justify-between pt-10 font-mono text-[10px] uppercase tracking-[0.3em] text-ghost/50 transition-colors duration-300 group-hover:text-magenta">
                       <span>Open hub</span>
                       <span class="text-lg leading-none transition-transform duration-300 group-hover:translate-x-1">→</span>
                     </div>
