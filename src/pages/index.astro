@@ -5,9 +5,9 @@ import bailey from "../content/artists/bailey-holmes.json";
 import charlie from "../content/artists/charlie-choppa.json";
 
 const roster = [
-  { ...kav, url: "/kav", tilt: "card-tilt-1" },
-  { ...bailey, url: "/bailey-holmes", tilt: "card-tilt-2" },
-  { ...charlie, url: "/charlie-choppa", tilt: "card-tilt-3" },
+  { ...kav, url: "/kav" },
+  { ...bailey, url: "/bailey-holmes" },
+  { ...charlie, url: "/charlie-choppa" },
 ];
 
 const totalCombinedStreams = roster.reduce((sum, a) => sum + (a.stats.totalStreams || 0), 0);
@@ -117,34 +117,31 @@ const tickerB = roster.map(r => `${r.name.toUpperCase()} · ${r.stats.totalStrea
             const poster = artist.videos && artist.videos[0] ? artist.videos[0].poster : null;
             const number = String(i + 1).padStart(2, "0");
             return (
-              <a href={artist.url} class={`group relative block ${artist.tilt}`}>
+              <a href={artist.url} class="group relative block">
                 <div
-                  class="relative overflow-hidden border-2 border-ghost/15 bg-ink-soft transition-all duration-500 group-hover:border-magenta"
-                  style="box-shadow: 0 12px 40px rgba(0,0,0,0.5);"
+                  class="relative overflow-hidden border border-ghost/10 bg-ink-soft transition-all duration-300 ease-out group-hover:-translate-y-2 group-hover:border-magenta/80 group-hover:shadow-[0_24px_60px_-12px_rgba(255,0,122,0.35)]"
                 >
                   <!-- Poster background -->
                   {poster && (
                     <div
-                      class="absolute inset-0 bg-cover bg-center opacity-30 transition-opacity duration-500 group-hover:opacity-50"
+                      class="absolute inset-0 bg-cover bg-center opacity-30 transition-opacity duration-500 group-hover:opacity-55"
                       style={`background-image: url(${poster});`}
                     />
                   )}
                   <div
                     class="absolute inset-0"
-                    style="background: linear-gradient(180deg, rgba(10,6,18,0.5) 0%, rgba(10,6,18,0.95) 80%);"
+                    style="background: linear-gradient(180deg, rgba(10,6,18,0.55) 0%, rgba(10,6,18,0.96) 80%);"
                   />
 
                   <!-- Card content -->
-                  <div class="relative z-10 p-6 sm:p-8">
-                    <div class="flex items-center justify-between">
-                      <span class="sticker px-2.5 py-1 text-[10px]">№ {number}</span>
-                      <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-cyan">
-                        FM {artist.areaCode}
-                      </span>
+                  <div class="relative z-10 p-7 sm:p-9">
+                    <div class="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em]">
+                      <span class="text-ghost/40">№ {number}</span>
+                      <span class="text-ghost/40">FM {artist.areaCode}</span>
                     </div>
 
                     <h3
-                      class="font-display chrom-soft mt-8 text-5xl uppercase leading-[0.85] text-ghost transition-colors group-hover:text-magenta sm:text-6xl"
+                      class="font-display mt-10 text-5xl uppercase leading-[0.88] text-ghost transition-colors duration-300 group-hover:text-magenta sm:text-6xl"
                       style="letter-spacing:-0.04em;"
                     >
                       {artist.name}
@@ -153,28 +150,29 @@ const tickerB = roster.map(r => `${r.name.toUpperCase()} · ${r.stats.totalStrea
                     <p class="mt-4 max-w-xs text-sm text-ghost/60">{artist.tagline}</p>
 
                     <!-- Stats row -->
-                    <div class="mt-8 grid grid-cols-2 gap-3 border-t border-ghost/10 pt-5 font-mono text-[10px] uppercase tracking-[0.25em] text-ghost/50">
+                    <div class="mt-10 grid grid-cols-2 gap-4 border-t border-ghost/10 pt-5 font-mono text-[10px] uppercase tracking-[0.25em] text-ghost/40">
                       <div>
-                        <div class="text-magenta">STREAMS</div>
-                        <div class="mt-1 text-base font-bold tracking-tight text-ghost">{totalDisp}</div>
+                        <div>STREAMS</div>
+                        <div class="mt-1.5 text-base font-bold tracking-tight text-ghost">{totalDisp}</div>
                       </div>
                       <div>
-                        <div class="text-cyan">MONTHLY</div>
-                        <div class="mt-1 text-base font-bold tracking-tight text-ghost">
+                        <div>MONTHLY</div>
+                        <div class="mt-1.5 text-base font-bold tracking-tight text-ghost">
                           {(artist.stats.monthlyListeners / 1000).toFixed(0)}k
                         </div>
                       </div>
                     </div>
 
                     {topTrack && (
-                      <div class="mt-6 border-t border-ghost/10 pt-5 font-mono text-[10px] uppercase tracking-[0.25em] text-ghost/40">
-                        <span class="text-acid">▶ TOP CUT</span><br/>
-                        <span class="mt-1 inline-block text-sm font-bold tracking-normal text-ghost">{topTrack.title}</span>
+                      <div class="mt-5 border-t border-ghost/10 pt-5 font-mono text-[10px] uppercase tracking-[0.25em] text-ghost/40">
+                        <span>TOP CUT</span>
+                        <div class="mt-1.5 text-sm font-bold tracking-normal text-ghost">{topTrack.title}</div>
                       </div>
                     )}
 
-                    <div class="mt-8 inline-flex items-center gap-2 border border-magenta/60 px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-magenta transition-all group-hover:bg-magenta group-hover:text-ink">
-                      ⏵ Open hub
+                    <div class="mt-10 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em] text-ghost/50 transition-colors duration-300 group-hover:text-magenta">
+                      <span>Open hub</span>
+                      <span class="text-lg leading-none transition-transform duration-300 group-hover:translate-x-1">→</span>
                     </div>
                   </div>
                 </div>
