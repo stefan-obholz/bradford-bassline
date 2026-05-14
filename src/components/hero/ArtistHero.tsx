@@ -211,8 +211,11 @@ export default function ArtistHero({
           </div>
 
           <h1
-            className="font-display chrom mt-6 text-[24vw] uppercase leading-[0.82] text-ghost sm:text-[18vw] md:text-[15vw] lg:text-[13vw]"
-            style={{ letterSpacing: "-0.05em" }}
+            className="font-display mt-6 text-[24vw] uppercase leading-[0.82] text-ghost sm:text-[18vw] md:text-[15vw] lg:text-[13vw]"
+            style={{
+              letterSpacing: "-0.05em",
+              textShadow: "0 6px 32px rgba(10,6,18,0.7), 0 0 1px rgba(248,248,255,0.3)",
+            }}
           >
             {name}
           </h1>
